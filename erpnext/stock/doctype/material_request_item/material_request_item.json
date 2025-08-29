@@ -49,6 +49,7 @@
   "bom_no",
   "accounting_dimensions_section",
   "project",
+  "task",
   "dimension_col_break",
   "cost_center",
   "more_info",
@@ -278,7 +279,15 @@
    "fieldname": "project",
    "fieldtype": "Link",
    "label": "Project",
-   "options": "Project"
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "options": "Task",
+   "reqd": 1
   },
   {
    "fieldname": "production_plan",

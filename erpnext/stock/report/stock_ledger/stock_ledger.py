@@ -711,7 +711,7 @@ def check_inventory_dimension_filters_applied(filters) -> bool:
 # function to set amount and applicable charge
 def set_lcv_amount_and_charges(sle):
     """
-    Updates the Stock Ledger Entry with amount and applicable_charges
+    updates the Stock Ledger Entry with amount and applicable_charges
     from related Landed Cost Voucher(s), if voucher_type is Purchase Receipt or Purchase Invoice.
     """
     # only apply to Purchase Receipt or Purchase Invoice

@@ -416,6 +416,10 @@ doc_events = {
     
 	"Work Order": {
         "before_submit": "erpnext.custom.work_order.validate_workstation"
+    },
+    
+	"Material Request": {
+        "before_save": "erpnext.custom.material_request.validate_mr"
     }
 }
 

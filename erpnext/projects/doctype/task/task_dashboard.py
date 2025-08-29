@@ -6,5 +6,6 @@ def get_data():
 		"fieldname": "task",
 		"transactions": [
 			{"label": _("Activity"), "items": ["Timesheet"]},
+			{"label": _("Material"), "items": ["Material Request"]},
 		],
 	}
