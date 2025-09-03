@@ -50,6 +50,10 @@ def validate_mr(doc, method):
             if pi.item_code not in item_plan_info:
                 item_plan_info[pi.item_code] = {"project": pi.project, "task": pi.task}
 
+        daily_qty_map = defaultdict(float)
+        for item in doc.items:
+            daily_qty_map[item.item_code] += item.qty
+
         # now validate each item in Daily MR
         for item in doc.items:
             code = item.item_code
@@ -81,11 +85,11 @@ def validate_mr(doc, method):
                 SELECT SUM(qty) FROM `tabMaterial Request Item`
                 WHERE item_code = %s AND parent IN (
                     SELECT name FROM `tabMaterial Request`
-                    WHERE project = %s AND material_request_type != 'Plan' AND docstatus < 2
+                    WHERE project = %s AND material_request_type != 'Plan' AND docstatus = 1
                 )
             """, (code, mr_project))[0][0] or 0
 
-            total_after_this = total_daily_qty + item.qty
+            total_after_this = total_daily_qty + daily_qty_map[code]
 
             if total_after_this > planned_qty_map[code]:
                 frappe.throw(_("Item {0}: Requested quantity exceeds total planned quantity ({1} > {2})").format(code, total_after_this, planned_qty_map[code]))
