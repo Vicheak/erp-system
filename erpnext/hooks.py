@@ -420,6 +420,10 @@ doc_events = {
     
 	"Material Request": {
         "before_save": "erpnext.custom.material_request.validate_mr"
+    },
+    
+	"Task": {
+        "before_save": "erpnext.custom.task.update_task_group_progress"
     }
 }
 
